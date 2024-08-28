@@ -11,11 +11,11 @@ class Freeze:
         file_read = read_md(os.path.join(self.path, "metadata.md"))
         return file_read["yaml"]
     
-    def iter(self, func):
+    def iter(self, func, func_params = {}):
         for root, dirs, files in os.walk(os.path.join(self.path, "content")):
             root_parts = os.path.relpath(root, os.path.join(self.path, "content")).split(os.sep)
             
             for file in files:
                 if is_markdown_file(os.path.join(root, file)):
                     freeze_item = FreezeItem(os.path.join(root, file), root_parts)
-                    func(freeze_item)
+                    func(freeze_item, func_params)

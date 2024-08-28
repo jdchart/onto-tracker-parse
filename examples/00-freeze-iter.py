@@ -3,7 +3,7 @@ import otp
 VAULT_PATH = "/Users/jacob/Documents/plugin-test-vault"
 
 # Define a function that will be run on each item in the freeze:
-def my_function(element : otp.FreezeItem):
+def my_function(element : otp.FreezeItem, other_params):
     print(element.path)
     print(element.tree)
     print(element.content)
