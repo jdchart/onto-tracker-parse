@@ -9,7 +9,7 @@ LICENSE_VALUE = "etalab-2.0" # https://documentation.huma-num.fr/nakala-guide-de
 # If COLLECTION_ID == None, a collection will be created with the given title.
 # Otherwise, the collection of given ID will be retrieved and added to.
 COLLECTION_TITLE = "Test collection onto tracker"
-COLLECTION_ID = None
+COLLECTION_ID = "10.34847/nkl.6a448553"
 
 # Define a function that will be run on each item in the freeze:
 def my_function(element : otp.FreezeItem, other_params):
@@ -42,6 +42,8 @@ def my_function(element : otp.FreezeItem, other_params):
     if element.content != "":
         desc_data = {"value": element.content, "propertyUri": "http://purl.org/dc/terms/description", "lang": None, "typeUri": None}
         nklco.post_datas_metadatas(other_params["nakala_target"], rep.dictVals["payload"]["id"], desc_data)
+
+    # Add a relation field if using heurist
 
 def process():
     # Connect to test instance of nakala using our API key and get our user id::
